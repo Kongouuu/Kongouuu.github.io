@@ -1,23 +1,10 @@
----
-layout:     post
-title:      图形笔记 - 初级PBR
-subtitle:   对整个PBR框架的个人理解
-date:       2021-11-05
-author:     BY
-header-img: 
-catalog: true
-tags:
-    - 图形
-    - 实时渲染
----
-
 # 前言
 
 一般学习图形学的时候第一个着色模型会是布林冯着色模型
 
-![Blinn-Phong](/img/in-post/pbr\blinn-phong.png)
+![Blinn-Phong](D:\study\yr4_gap\Notes\CG\img\pbr\blinn-phong.png)
 
-![Blinn-Phong2](/img/in-post/pbr\blinn-phong2.png)
+![Blinn-Phong2](D:\study\yr4_gap\Notes\CG\img\pbr\blinn-phong2.png)
 
 这是一个比较简单的光照模型，跟上图所示分为三个部分，也就是说我们要为每个物体提供以下数据：
 
@@ -56,7 +43,7 @@ tags:
 
 先说下高光，一般使用这个**Microfacet Cook-Torrance BRDF**的高光计算。
 
-![](/img/in-post/pbr\microsurface.png)
+![](D:\study\yr4_gap\Notes\CG\img\pbr\microsurface.png)
 
 1. **F**: Fresnel (高光反射)，如果是金属的，那么输入F0会在0.7~1.0,  diffuse的物体差不多都在0.02~0.04。 我们看一下公式
    
@@ -101,7 +88,7 @@ tags:
 
 Lambert 是最简单的漫反射模型，如下：
 
-![Lambert](/img/in-post/pbr\Lambert.png)
+![Lambert](D:\study\yr4_gap\Notes\CG\img\pbr\Lambert.png)
 
 我们考虑到兰伯特漫反射的时候，我们会直接取 **ρ<sub>i</sub>/π**,  ρ是albedo map里面的固有色。 我们的固有色为了pbr的能量守恒必须除以π，这是因为我们假设固有色的漫反射会平均的反射到半球内的每个立体角，那么我们视角方向的立体角就最多只能得到1/π的能量。
 
@@ -109,7 +96,7 @@ Lambert 是最简单的漫反射模型，如下：
 
 Disney 模型效果看起来会比Lambert的好一些，不过Disney系列的光照模型并没有特别严格的能量守恒，或者说他们的主要目标并不是让计算**贴近物理**，而是单纯的想得到一个更好看的效果。
 
-![Disney](/img/in-post/pbr\Disneybrdf.png)
+![Disney](D:\study\yr4_gap\Notes\CG\img\pbr\Disneybrdf.png)
 
 #### BRDF融合和计算
 
@@ -121,7 +108,7 @@ Disney 模型效果看起来会比Lambert的好一些，不过Disney系列的光
 
 这地方属于一个比较民科的地方，比较通用的办法是**Cook Torrance BRDF**里面的计算：
 
-![](/img/in-post/pbr\brdf.png)
+![](D:\study\yr4_gap\Notes\CG\img\pbr\brdf.png)
 
 高光的部分在这个模型里是直接取的菲涅尔系数的值，表示在这个像素有多少光被反射。那理所当然的没有被高光反射的能量来处理就可以被当作漫反射。不过这里漫反射同时也要看材质的金属度，因为完全的金属是没有漫反射的。
 $$
