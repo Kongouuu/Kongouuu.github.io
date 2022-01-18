@@ -4,7 +4,7 @@ title:      图形实战 - NiagaraSPH水体模拟
 subtitle:   用UE4实现可互动水体
 date:       2021-11-09
 author:     
-header-img: 
+header-img: "img/archive-bg.png"
 catalog: true
 tags:
     - 图形
